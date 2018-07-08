@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ydm_ms:war exploded">
+    <output-path>$PROJECT_DIR$/../ydm_ms/out/artifacts/ydm_ms_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ydm_ms/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ydm_ms" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
