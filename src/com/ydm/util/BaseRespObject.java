@@ -10,7 +10,7 @@ public class BaseRespObject implements Serializable {
 	public static final Integer STATUS_0 = 0; // 失败
 	private Integer status;//0 失败 1成功
 	private String message;//消息
-	private Map data;//返回结果集
+	private Object data;//返回结果集
 	
 	public BaseRespObject() {
 
@@ -40,13 +40,14 @@ public class BaseRespObject implements Serializable {
 		this.message = message;
 	}
 
-	public Map getData() {
+	public Object getData() {
 		return data;
 	}
 
-	public void setData(Map data) {
+	public void setData(Object data) {
 		this.data = data;
 	}
 
+	
 	
 }

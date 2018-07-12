@@ -24,7 +24,7 @@
     <mvc:annotation-driven/>
     <!-- 静态资源放行 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
-    <mvc:resources mapping="/upload/**" location="/upload/"/>
+    <mvc:resources mapping="/com.ydm/**" location="/com.ydm/"/>
     
 	<!-- FreeMarker视图解析 在这里配置后缀名ftl和视图解析器。。 -->
 	<bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">

@@ -80,7 +80,7 @@
     <script type="text/javascript" src="./static/js/jquery.mockjax.js"></script>
 	<script type="text/javascript">
 		var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
-		var ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
+		var ajaxmockjax = 0;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
 		//默认账号密码
 		
 		var truelogin = "123456";
@@ -156,9 +156,11 @@
 	                ErroAlert('请输入您的账号');
 	            } else if (pwd == '') {
 	                ErroAlert('请输入密码');
-	            } else if (code == '' || code.length != 4) {
-	                ErroAlert('输入验证码');
-	            } else {
+	            } 
+	           // else if (code == '' || code.length != 4) {
+	           //  ErroAlert('输入验证码');
+	           //} 
+	            else {
 	                //认证中..
 	                fullscreen();
 	                $('.login').addClass('test'); //倾斜特效
@@ -180,19 +182,14 @@
 	                //登录
 	                var JsonData = { login: login, pwd: pwd, code: code };
 					//此处做为ajax内部判断
-					var url = "";
-					if(JsonData.login == truelogin && JsonData.pwd == truepwd && JsonData.code.toUpperCase() == CodeVal.toUpperCase()){
-						url = "Ajax/Login";
-					}else{
-						url = "Ajax/LoginFalse";
-					}
+					var url = "/ydm/User";
+					//if(JsonData.login == truelogin && JsonData.pwd == truepwd && JsonData.code.toUpperCase() == CodeVal.toUpperCase()){
+					//	url = "Ajax/Login";
+					//}else{
+					//	url = "Ajax/LoginFalse";
+					//}
 					
-					
-	                AjaxPost(url, JsonData,
-	                                function () {
-	                                    //ajax加载中
-	                                },
-	                                function (data) {
+	                AjaxPost(url, JsonData,function (data) {
 	                                    //ajax返回 
 	                                    //认证完成
 	                                    setTimeout(function () {
@@ -210,15 +207,15 @@
 	                                    setTimeout(function () {
 	                                        $('.authent').hide();
 	                                        $('.login').removeClass('test');
-	                                        if (data.Status == 'ok') {
+	                                        if (data.status == 1) {
 	                                            //登录成功
 	                                            $('.login div').fadeOut(100);
 	                                            $('.success').fadeIn(1000);
 	                                            $('.success').html(data.Text);
 												//跳转操作
-												
+	                                            window.location.href="/ydm/login";
 	                                        } else {
-	                                            AjaxErro(data);
+	                                            AjaxErro(data.message);
 	                                        }
 	                                    }, 2400);
 	                                })
